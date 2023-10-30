@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const webLinkAja());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class webLinkAja extends StatelessWidget {
+  const webLinkAja({super.key});
+  
 
   // This widget is the root of your application.
   @override
@@ -29,10 +31,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
+        useMaterial3: false,
       ),
-      home: const MyHomePage(title: 'MyApp'),
+      home: const MyHomePage(title: ''),
     );
   }
 }
@@ -78,15 +80,15 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   // TRY THIS: Try changing the color here to a specific color (to
+      //   // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+      //   // change color while the other colors stay the same.
+      //   backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      //   // Here we take the value from the MyHomePage object that was created by
+      //   // the App.build method, and use it to set our appbar title.
+      //   title: Text(widget.title),
+      // ),
       // body: Center(
       //   // Center is a layout widget. It takes a single child and positions it
       //   // in the middle of the parent.
@@ -137,51 +139,65 @@ class _MyHomePageState extends State<MyHomePage> {
           //   width: 220,
           // ),
           Container(
-            margin: EdgeInsets.only(top: 40.0), // Atur margin sesuai kebutuhan
-            child: Image(
-              image: NetworkImage(
-                  'https://cdn.dribbble.com/users/34919/screenshots/1615729/attachments/251132/HeroIllustration_Progress7.jpg'),
-              width: 100.0,
-              height: 100.0,
+            margin: EdgeInsets.only(top: 0.0), // Atur margin sesuai kebutuhan
+            child: Opacity(
+              opacity:
+                  0.7, // Ganti nilai ini sesuai dengan tingkat opasitas yang Anda inginkan (antara 0.0 hingga 1.0)
+              child: Image(
+                image: NetworkImage(
+                    'https://cdn.dribbble.com/users/34919/screenshots/1615729/attachments/251132/HeroIllustration_Progress7.jpg'),
+                width: 360.0,
+              ),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 50.0), // Atur margin sesuai kebutuhan
+            margin: EdgeInsets.only(
+                top: 60.0, left: 10.0), // Atur margin sesuai kebutuhan
             child: Image(
               image: NetworkImage(
                   'https://seeklogo.com/images/L/link-aja-logo-F029ED0939-seeklogo.com.png'),
-              height: 100.0,
+              height: 40.0,
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 50.0, left:200), // Atur margin sesuai kebutuhan
-            child: Image(
-              image: NetworkImage(
-                  'https://th.bing.com/th/id/OIP.LGez-yLvYTB2iaxZtTaZIQAAAA?pid=ImgDet&rs=1'),
-              height: 50.0,
+            margin: EdgeInsets.only(
+                top: 60.0, left: 260), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  5.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://th.bing.com/th/id/OIP.LGez-yLvYTB2iaxZtTaZIQAAAA?pid=ImgDet&rs=1'),
+                height: 40.0,
+              ),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 50.0, left:250), // Atur margin sesuai kebutuhan
-            child: Image(
-              image: NetworkImage(
-                  'https://th.bing.com/th/id/R.2a90ce34c16c8b7316aa331875165758?rik=eRtoChLmquohEQ&riu=http%3a%2f%2fjwofficialroblox.weebly.com%2fuploads%2f1%2f1%2f7%2f5%2f117541374%2fhaberdasher-icon-1_1_orig.png&ehk=X1vzqY3TSUsUxf1whmGizx2Ik61a6J5Oa5Ir%2fd5XAJ8%3d&risl=&pid=ImgRaw&r=0'),
-              height: 50.0,
+            margin: EdgeInsets.only(
+                top: 60.0, left: 310), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  5.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://th.bing.com/th/id/R.2a90ce34c16c8b7316aa331875165758?rik=eRtoChLmquohEQ&riu=http%3a%2f%2fjwofficialroblox.weebly.com%2fuploads%2f1%2f1%2f7%2f5%2f117541374%2fhaberdasher-icon-1_1_orig.png&ehk=X1vzqY3TSUsUxf1whmGizx2Ik61a6J5Oa5Ir%2fd5XAJ8%3d&risl=&pid=ImgRaw&r=0'),
+                height: 40.0,
+              ),
             ),
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Colors.red[600],
               borderRadius: BorderRadius.circular(10.0),
             ),
-            alignment: Alignment.topCenter,
-            margin: EdgeInsets.only(top: 100.0, left: 10.0),
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: 115.0, left: 10.0),
             child: Text(
-              "HI, SOFYAN NOOR ARIEF,S.ST, M.KOM.",
+              "\n\t\t\t\t\tHI, BIMA PUTRA WICAKSONO.",
               style: TextStyle(fontSize: 20, color: Colors.white),
               textAlign: TextAlign.center,
             ),
-            height: 150.0,
+            height: 140.0,
             width: 340,
           ),
           Container(
@@ -190,11 +206,11 @@ class _MyHomePageState extends State<MyHomePage> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(top: 150.0, left: 30.0),
+            margin: EdgeInsets.only(top: 165.0, left: 30.0),
             child: Text("\t\t\tYour Balance \n\t\t\tRp.10.184",
                 style: TextStyle(fontSize: 12, color: Colors.black)),
             height: 70.0,
-            width: 100.0,
+            width: 120.0,
           ),
           Container(
             decoration: BoxDecoration(
@@ -202,11 +218,11 @@ class _MyHomePageState extends State<MyHomePage> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(top: 150.0, left: 140.0),
+            margin: EdgeInsets.only(top: 165.0, left: 170.0),
             child: Text("\t\t\tBonus Balance \n\t\t\t0",
                 style: TextStyle(fontSize: 12, color: Colors.black)),
             height: 70.0,
-            width: 100.0,
+            width: 120.0,
           ),
           Container(
             decoration: BoxDecoration(
@@ -214,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             alignment: Alignment.topCenter,
-            margin: EdgeInsets.only(top: 280.0, left: 10.0),
+            margin: EdgeInsets.only(top: 270.0, left: 10.0),
             // child: Text(
             //   "HI, SOFYAN NOOR ARIEF,S.ST, M.KOM.",
             //   style: TextStyle(fontSize: 20, color: Colors.white),
@@ -225,18 +241,384 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 280.0, left: 20.0),
+            child: Text(
+              "Top Up",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 280.0, left: 101.0),
+            child: Text(
+              "Send Money",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 280.0, left: 182.0),
+            child: Text(
+              "Tiket Code",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 280.0, left: 263.0),
+            child: Text(
+              "See All",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            // top up
+            margin: EdgeInsets.only(
+                top: 288.0, left: 38), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  7.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://assets-global.website-files.com/606317d685e6b189218df406/6077e2fd773584d131f43938_card%20details.png'),
+                height: 37.0,
+              ),
+            ),
+          ),
+                    Container(
+            // top up
+            margin: EdgeInsets.only(
+                top: 288.0, left: 88), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  7.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://static-00.iconduck.com/assets.00/money-send-icon-256x256-g379qh12.png'),
+                height: 37.0,
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 365.0, left: 20.0),
+            child: Text(
+              "Pulsa/Data",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 365.0, left: 101.0),
+            child: Text(
+              "Electricity",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 365.0, left: 182.0),
+            child: Text(
+              "BPJS",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 365.0, left: 263.0),
+            child: Text(
+              "mgames",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 443.0, left: 20.0),
+            child: Text(
+              "Cable Tv & Internet",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 443.0, left: 101.0),
+            child: Text(
+              "PDAM",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 443.0, left: 182.0),
+            child: Text(
+              "Kartu UAng Electronik",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 443.0, left: 263.0),
+            child: Text(
+              "More",
+              style: TextStyle(fontSize: 13, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 75,
+          ),
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 420.0), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  9.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://www.telkomsel.com/sites/default/files/box_media/left/desktop/PulsaInternetBRI_800x450.jpg'),
+                width: 260.0,
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
               color: Colors.grey[350],
               borderRadius: BorderRadius.circular(10.0),
             ),
             alignment: Alignment.topCenter,
-            margin: EdgeInsets.only(top: 650.0, left: 10.0),
+            margin: EdgeInsets.only(top: 715.0, left: 10.0),
             // child: Text(
             //   "HI, SOFYAN NOOR ARIEF,S.ST, M.KOM.",
             //   style: TextStyle(fontSize: 20, color: Colors.white),
             //   textAlign: TextAlign.center,
             // ),
-            height: 2.0,
+            height: 1.5,
             width: 340,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 717.0, left: 26.0),
+            child: Text(
+              "Home",
+              style: TextStyle(fontSize: 16, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 60,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 717.0, left: 84.0),
+            child: Text(
+              "History",
+              style: TextStyle(fontSize: 16, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 60,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 695.0, left: 150.0),
+            child: Text(
+              "Pay",
+              style: TextStyle(fontSize: 16, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 75,
+            width: 60,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 717.0, left: 222.0),
+            child: Text(
+              "Inbox",
+              style: TextStyle(fontSize: 16, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 60,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 717.0, left: 278.0),
+            child: Text(
+              "Account",
+              style: TextStyle(fontSize: 16, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            height: 62,
+            width: 60,
+          ),
+          Container(
+            //account
+            margin: EdgeInsets.only(
+                top: 727.0, left: 290), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  5.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://www.cfhp.com.au/wp-content/uploads/2021/09/person.png'),
+                height: 30.0,
+              ),
+            ),
+          ),
+          Container(
+            //inbox
+            margin: EdgeInsets.only(
+                top: 725.0, left: 230), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  3.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://eickhofcolumbaria.com/wp-content/uploads/2020/10/envelope.png'),
+                height: 35.0,
+              ),
+            ),
+          ),
+          Container(
+            //pay
+            margin: EdgeInsets.only(
+                top: 700.0, left: 155), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  5.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://d1qb2nb5cznatu.cloudfront.net/startups/i/20383-6e4a24f0e930efcbe846c1b1d221c33f-medium_jpg.jpg?buster=1381253791'),
+                height: 50.0,
+              ),
+            ),
+          ),
+          Container(
+            //history
+            margin: EdgeInsets.only(
+                top: 727.0, left: 103), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  1.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://www.servicenow.com/content/dam/servicenow/images/home-asset/icons/icon-ebook.png'),
+                height: 30.0,
+              ),
+            ),
+          ),
+          Container(
+            // home
+            margin: EdgeInsets.only(
+                top: 725.0, left: 37), // Atur margin sesuai kebutuhan
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  7.0), // Ganti nilai sesuai dengan besar radius yang Anda inginkan
+              child: Image(
+                image: NetworkImage(
+                    'https://www.betco.com/images/default-source/icons/icon_lodging_53x53.png?sfvrsn=2'),
+                height: 37.0,
+              ),
+            ),
           ),
           // Container(
           //   margin: EdgeInsets.only(top: 400.0), // Atur margin sesuai kebutuhan
